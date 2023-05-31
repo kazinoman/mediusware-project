@@ -55,7 +55,7 @@ const ShowAllContacts = ({ isOpen, onClose, data, openAllContacts, openUsContact
         <Button onClick={openUsContacts} style={{ backgroundColor: "#ff7f50" }}>
           US contacts
         </Button>
-        <Button variant="secondary" onClick={onClose}>
+        <Button variant="secondary" onClick={onClose} style={{ color: "#000", backgroundColor: "#fff", border: "1px solid #46139f" }}>
           Close
         </Button>
       </Modal.Footer>

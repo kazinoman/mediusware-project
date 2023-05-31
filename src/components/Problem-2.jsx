@@ -5,8 +5,8 @@ import ShowUsContacts from "./modals/usContacts";
 
 const Problem2 = () => {
   const [contacts, setContacts] = useState({ all: [], us: [] });
-  const [modal1, setModal1] = useState(false);
-  const [modal2, setModal2] = useState(false);
+  const [openAllContactsModal, setOpenAllContactsModal] = useState(false);
+  const [openUsContactsModal, setOpenUsContactsModal] = useState(false);
 
   useEffect(() => {
     const fetchContacts = async () => {
@@ -19,14 +19,14 @@ const Problem2 = () => {
     fetchContacts();
   }, []);
 
-  const handleCloseModal1 = () => {
-    setModal1(false);
-    setModal2(false);
+  const handleCloseAllModal = () => {
+    setOpenAllContactsModal(false);
+    setOpenUsContactsModal(false);
   };
 
   const handleCloseModal2 = () => {
-    setModal1(false);
-    setModal2(false);
+    setOpenAllContactsModal(false);
+    setOpenUsContactsModal(false);
   };
 
   return (
@@ -39,8 +39,8 @@ const Problem2 = () => {
             className="btn btn-lg btn-outline-primary"
             type="button"
             onClick={() => {
-              setModal1(true);
-              setModal2(false);
+              setOpenAllContactsModal(true);
+              setOpenUsContactsModal(false);
             }}
           >
             All Contacts
@@ -49,8 +49,8 @@ const Problem2 = () => {
             className="btn btn-lg btn-outline-warning"
             type="button"
             onClick={() => {
-              setModal1(false);
-              setModal2(true);
+              setOpenAllContactsModal(false);
+              setOpenUsContactsModal(true);
             }}
           >
             US Contacts
@@ -58,29 +58,29 @@ const Problem2 = () => {
         </div>
       </div>
       <ShowAllContacts
-        isOpen={modal1}
-        onClose={handleCloseModal1}
+        isOpen={openAllContactsModal}
+        onClose={handleCloseAllModal}
         data={contacts.all}
         openAllContacts={() => {
-          setModal1(true);
-          setModal2(false);
+          setOpenAllContactsModal(true);
+          setOpenUsContactsModal(false);
         }}
         openUsContacts={() => {
-          setModal1(false);
-          setModal2(true);
+          setOpenAllContactsModal(false);
+          setOpenUsContactsModal(true);
         }}
       />
       <ShowUsContacts
-        isOpen={modal2}
-        onClose={handleCloseModal2}
+        isOpen={openUsContactsModal}
+        onClose={handleCloseAllModal}
         data={contacts.us}
         openAllContacts={() => {
-          setModal1(true);
-          setModal2(false);
+          setOpenAllContactsModal(true);
+          setOpenUsContactsModal(false);
         }}
         openUsContacts={() => {
-          setModal1(false);
-          setModal2(true);
+          setOpenAllContactsModal(false);
+          setOpenUsContactsModal(true);
         }}
       />
     </div>
